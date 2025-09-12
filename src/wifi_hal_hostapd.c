@@ -1423,9 +1423,10 @@ int update_hostap_iface_flags(wifi_interface_info_t *interface)
         iface->drv_flags |= WPA_DRIVER_FLAGS_PROBE_RESP_OFFLOAD;
     }
 
-    if (g_wifi_hal.platform_flags & PLATFORM_FLAGS_STA_INACTIVITY_TIMER) {
-        iface->drv_flags |= WPA_DRIVER_FLAGS_INACTIVITY_TIMER;
-    }
+    // XB10-2046: removed STA timeout driver support
+    // if (g_wifi_hal.platform_flags & PLATFORM_FLAGS_STA_INACTIVITY_TIMER) {
+    //     iface->drv_flags |= WPA_DRIVER_FLAGS_INACTIVITY_TIMER;
+    // }
 
     return 0;
 }
@@ -1713,9 +1714,10 @@ int update_hostap_iface(wifi_interface_info_t *interface)
         iface->drv_flags |= WPA_DRIVER_FLAGS_PROBE_RESP_OFFLOAD;
     }
 
-    if (g_wifi_hal.platform_flags & PLATFORM_FLAGS_STA_INACTIVITY_TIMER) {
-        iface->drv_flags |= WPA_DRIVER_FLAGS_INACTIVITY_TIMER;
-    }
+    // XB10-2046: removed STA timeout driver support
+    // if (g_wifi_hal.platform_flags & PLATFORM_FLAGS_STA_INACTIVITY_TIMER) {
+    //     iface->drv_flags |= WPA_DRIVER_FLAGS_INACTIVITY_TIMER;
+    // }
 
     iface->conf->ht_capab &= ~HT_CAP_INFO_SUPP_CHANNEL_WIDTH_SET;
     if (param->channelWidth >= WIFI_CHANNELBANDWIDTH_40MHZ) {

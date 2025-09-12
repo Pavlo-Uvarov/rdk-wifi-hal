@@ -4949,9 +4949,10 @@ static void wiphy_info_feature_flags(wifi_radio_info_t *radio,
         radio->driver_data.data_tx_status = 1;
     }
 
-    if (flags & NL80211_FEATURE_INACTIVITY_TIMER) {
-        capa->flags |= WPA_DRIVER_FLAGS_INACTIVITY_TIMER;
-    }
+    // XB10-2046: removed STA timeout driver support
+    // if (flags & NL80211_FEATURE_INACTIVITY_TIMER) {
+    //     capa->flags |= WPA_DRIVER_FLAGS_INACTIVITY_TIMER;
+    // }
 
     if (flags & NL80211_FEATURE_SAE) {
         capa->flags |= WPA_DRIVER_FLAGS_SAE;
