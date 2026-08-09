@@ -605,7 +605,8 @@ static struct sta_info *wifi_rrm_find_sta_in_iface(struct hostapd_iface *iface, 
     return NULL;
 }
 
-#if !defined(PLATFORM_LINUX) && !defined(QCOM_ATH12K_PORT) || defined(_PLATFORM_BANANAPI_R4_) || defined(_PLATFORM_RASPBERRYPI_)
+#if (!defined(PLATFORM_LINUX) && !defined(QCOM_ATH12K_PORT)) || \
+    defined(_PLATFORM_BANANAPI_R4_) || defined(_PLATFORM_RASPBERRYPI_)
 int handle_wnm_action_frame(wifi_interface_info_t *interface, const mac_address_t sta, struct ieee80211_mgmt *mgmt, size_t len)
 {
     u8 action;
@@ -1083,7 +1084,8 @@ static void wifi_set_disassoc_timer(struct hostapd_data *hapd, struct sta_info *
 }
 #endif /*!defined (QCOM_ATH12K_PORT) */
 
-#if !defined(PLATFORM_LINUX) && !defined (QCOM_ATH12K_PORT) || defined(_PLATFORM_BANANAPI_R4_) || defined(_PLATFORM_RASPBERRYPI_)
+#if (!defined(PLATFORM_LINUX) && !defined(QCOM_ATH12K_PORT)) || \
+    defined(_PLATFORM_BANANAPI_R4_) || defined(_PLATFORM_RASPBERRYPI_)
 /* Implementation is based on wnm_send_bss_tm_req() from wnm_ap.c */
 int wifi_wnm_send_bss_tm_req(wifi_interface_info_t *interface, struct sta_info *sta,
             u8 dialog_token, u8 req_mode, int disassoc_timer, u8 valid_int,
